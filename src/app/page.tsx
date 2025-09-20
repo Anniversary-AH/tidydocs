@@ -1,103 +1,78 @@
-import Image from "next/image";
+import Link from "next/link";
 
-export default function Home() {
+type FeatureCard = {
+  emoji: string;
+  emojiLabel: string;
+  title: string;
+  tagline: string;
+  href: string;
+};
+
+const features: FeatureCard[] = [
+  {
+    emoji: "📄",
+    emojiLabel: "Document",
+    title: "CSV → PDF",
+    tagline: "Polished, branded reports.",
+    href: "/csv-to-pdf",
+  },
+  {
+    emoji: "🧩",
+    emojiLabel: "Conversion",
+    title: "PDF → Word/Excel",
+    tagline: "Editable conversions in one click.",
+    href: "/pdf-to-word",
+  },
+  {
+    emoji: "📊",
+    emojiLabel: "Charts",
+    title: "Excel → Charts",
+    tagline: "Auto dashboards from your data.",
+    href: "/excel-to-charts",
+  },
+];
+
+const Home = () => {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <section className="mx-auto max-w-6xl px-4 sm:px-6 py-12">
+      <div className="mx-auto max-w-3xl text-center">
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">Make messy files client-ready in seconds</h1>
+        <p className="mt-3 text-neutral-700">Free, fast tools for cleaning and converting everyday documents.</p>
+      </div>
+      {/* Hero Tiles Preview */}
+      <div className="mb-8 rounded-2xl bg-white shadow-sm shadow-neutral-200 p-6">
+        <div className="aspect-[2/1] bg-neutral-100 rounded-xl flex items-center justify-center overflow-hidden">
+          <img 
+            src="/hero-tiles.svg" 
+            alt="TidyDocs tools preview" 
+            className="w-full h-full object-contain"
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+
+      <div className="mt-8 grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-3">
+        {features.map((f) => (
+          <div key={f.title} className="rounded-2xl bg-white shadow-sm shadow-neutral-200 p-6 flex flex-col">
+            <div className="flex items-center gap-3">
+              <span role="img" aria-label={f.emojiLabel} className="text-2xl">{f.emoji}</span>
+              <h2 className="text-lg font-semibold tracking-tight">{f.title}</h2>
+            </div>
+            <p className="mt-2 text-neutral-700">{f.tagline}</p>
+            <div className="mt-4">
+              <Link
+                href={f.href}
+                aria-label={`${f.title} – ${f.tagline}`}
+                className="inline-flex items-center justify-center h-10 px-4 rounded-xl bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500"
+              >
+                Open tool
+              </Link>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p className="mt-4 text-xs text-neutral-600">No uploads stored. Files processed in your browser or short-lived memory.</p>
+    </section>
   );
-}
+};
+
+export default Home;

@@ -1,0 +1,12 @@
+Date,Description,Amount,Paid
+2024-01-04,Laptop,599.00,Yes
+2024-01-07,Docking station,99.00,Yes
+2024-01-10,Monitor,219.00,Yes
+2024-01-11,Mouse,25.00,Yes
+2024-01-17,Keyboard,49.00,Yes
+2024-01-22,Printer,179.00,No
+2024-01-28,Wi-Fi router,89.00,Yes
+2024-01-29,Desk chair,149.00,Yes
+,Extra blank row,,
+2024-01-30,"  Extra spaces in description  ",200.00,Yes
+2024-01-31,"Unescaped, comma issue",300.00,Yes
